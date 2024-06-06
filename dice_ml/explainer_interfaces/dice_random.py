@@ -184,18 +184,18 @@ class DiceRandom(ExplainerBase):
         # decoding to original label
         test_instance_df, final_cfs_df, final_cfs_df_sparse = \
             self.decode_to_original_labels(test_instance_df, final_cfs_df, final_cfs_df_sparse)
-        if final_cfs_df is not None:
-            if verbose:
-                print('Diverse Counterfactuals found! total time taken: %02d' %
-                      m, 'min %02d' % s, 'sec')
-        else:
-            if self.total_cfs_found == 0:
-                print('No Counterfactuals found for the given configuration, perhaps try with different parameters...',
-                      '; total time taken: %02d' % m, 'min %02d' % s, 'sec')
-            else:
-                print('Only %d (required %d) ' % (self.total_cfs_found, self.total_CFs),
-                      'Diverse Counterfactuals found for the given configuration, perhaps try with different parameters...',
-                      '; total time taken: %02d' % m, 'min %02d' % s, 'sec')
+        # if final_cfs_df is not None:
+        #     if verbose:
+        #         print('Diverse Counterfactuals found! total time taken: %02d' %
+        #               m, 'min %02d' % s, 'sec')
+        # else:
+        #     if self.total_cfs_found == 0:
+        #         print('No Counterfactuals found for the given configuration, perhaps try with different parameters...',
+        #               '; total time taken: %02d' % m, 'min %02d' % s, 'sec')
+        #     else:
+        #         print('Only %d (required %d) ' % (self.total_cfs_found, self.total_CFs),
+        #               'Diverse Counterfactuals found for the given configuration, perhaps try with different parameters...',
+        #               '; total time taken: %02d' % m, 'min %02d' % s, 'sec')
 
         desired_class_param = self.decode_model_output(pd.Series(self.target_cf_class))[0] \
             if hasattr(self, 'target_cf_class') else desired_class
